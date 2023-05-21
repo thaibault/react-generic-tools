@@ -1,5 +1,5 @@
 {
-  "name": "react-generic",
+  "name": "react-generic-tools",
   "version": "0.0.2",
   "description": "Generic utility types, methods and components.",
   "keywords": [
@@ -7,10 +7,10 @@
     "generic",
     "react"
   ],
-  "homepage": "https://torben.website/react-generic",
+  "homepage": "https://torben.website/react-generic-tools",
   "bugs": {
     "email": "info@torben.website",
-    "url": "https://github.com/thaibault/react-generic/issues"
+    "url": "https://github.com/thaibault/react-generic-tools/issues"
   },
   "license": "CC-BY-3.0",
   "main": "index.js",
@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/thaibault/react-generic"
+    "url": "https://github.com/thaibault/react-generic-tools"
   },
   "scripts": {
     "build": "yarn build:types; yarn build:plain",
@@ -47,7 +47,7 @@
     "update:documentation": "documentation-website",
     "watch": "weboptimizer build --watch"
   },
-  "runkitExample": "require('@babel/runtime/package.json')\n\nglobalThis.window = globalThis\n\nconst {useMemorizedValue} = require('react-generic')\n\nconst value = useMemorizedValue({date: 'content'})",
+  "runkitExample": "require('@babel/runtime/package.json')\n\nglobalThis.window = globalThis\n\nconst {useMemorizedValue} = require('react-generic-tools')\n\nconst value = useMemorizedValue({date: 'content'})",
   "devDependencies": {
     "@babel/eslint-parser": "*",
     "@babel/preset-react": "*",
