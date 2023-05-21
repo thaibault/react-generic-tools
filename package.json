@@ -20,7 +20,10 @@
     "url": "https://torben.website"
   },
   "files": [
-    "index.d.ts"
+    "index.d.ts",
+    "testHelper.d.ts",
+    "testHelper.js",
+    "type.d.ts"
   ],
   "repository": {
     "type": "git",
