@@ -16,6 +16,7 @@
     endregion
 */
 // region imports
+import {Page, PaginateOptions} from 'clientnode/type'
 import {
     FunctionComponentElement,
     PropsWithChildren,
@@ -85,6 +86,12 @@ export interface TestEnvironment {
         }
     >(hook:(...parameters:P) => R, options:Partial<TestHookOptions<P, WP>>) =>
         TestHookResult<R, P>
+}
+// endregion
+// region pagination
+export interface PaginationProperties extends PaginateOptions {
+    className:string
+    render:(page:Page) => ReactNode
 }
 // endregion
 // region vim modline
