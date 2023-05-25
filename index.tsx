@@ -17,7 +17,11 @@
     endregion
 */
 // region imports
-import {useMemo} from 'react'
+import Tools from 'clientnode'
+import {Page} from 'clientnode/type'
+import {ReactElement, ReactNode, useMemo} from 'react'
+
+import {GenericFunctionComponent, PaginationProperties} from './type'
 // endregion
 // region hooks
 /**
@@ -31,6 +35,49 @@ import {useMemo} from 'react'
 export const useMemorizedValue = <T = unknown>(
     value:T, ...dependencies:Array<unknown>
 ):T => useMemo(():T => value, dependencies)
+// endregion
+// region components
+export const Pagination:GenericFunctionComponent<
+    Partial<PaginationProperties>
+> = ({
+    boundaryCount = 1,
+    className = 'pagination',
+    disabled = false,
+    hideNextButton = false,
+    hidePrevButton = false,
+    page = 1,
+    pageSize = 5,
+    render = ({page, type}):string => `${page || type}`,
+    showFirstButton = false,
+    showLastButton = false,
+    siblingCount = 1,
+    total = 100,
+    ...additionalProperties
+}):ReactNode => (
+    total > (pageSize ?? 1) ?
+        <div className={className}>
+            <ul {...additionalProperties}>
+                {Tools.arrayPaginate({
+                    boundaryCount,
+                    disabled,
+                    hideNextButton,
+                    hidePrevButton,
+                    page,
+                    pageSize,
+                    showFirstButton,
+                    showLastButton,
+                    siblingCount,
+                    total
+                }).map((item:Page):ReactElement =>
+                    <li key={
+                        item.type +
+                        (typeof item.page === 'number' ? `-${item.page}` : '')
+                    }>{render(item)}</li>
+                )}
+            </ul>
+        </div> :
+        ''
+)
 // endregion
 // region vim modline
 // vim: set tabstop=4 shiftwidth=4 expandtab:
