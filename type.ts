@@ -18,6 +18,7 @@
 // region imports
 import {Page, PaginateOptions} from 'clientnode/type'
 import {
+    FunctionComponent,
     FunctionComponentElement,
     PropsWithChildren,
     ReactNode,
@@ -56,7 +57,7 @@ export interface TestHookWrapper<
         children:FunctionComponentElement<{parameters:P}>
     }
 > {
-    component:GenericFunctionComponent<WP>
+    component:FunctionComponent<WP>
     properties?:WP
 }
 export interface TestHookResult<
