@@ -86,8 +86,10 @@ export interface TestEnvironment {
     runHook:<
         R = unknown,
         P extends Array<unknown> = Array<unknown>,
-        WP extends {children:FunctionComponentElement<{parameters:P}>} = {
-            children:FunctionComponentElement<{parameters:P}>
+        WP extends {
+            children:FunctionComponentElement<{parameters:P}>|ReactElement
+        } = {
+            children:FunctionComponentElement<{parameters:P}>|ReactElement
         }
     >(hook:(...parameters:P) => R, options:Partial<TestHookOptions<P, WP>>) =>
         TestHookResult<R, P>
