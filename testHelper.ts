@@ -21,7 +21,7 @@ import {afterEach, beforeEach} from '@jest/globals'
 import {globalContext} from 'clientnode'
 import {$Global} from 'clientnode/type'
 import {
-    createElement, FunctionComponent, FunctionComponentElement, ReactNode
+    createElement, FunctionComponentElement, ReactElement, ReactNode
 } from 'react'
 import {flushSync} from 'react-dom'
 import {createRoot, Root as ReactRoot} from 'react-dom/client'
@@ -63,8 +63,10 @@ export const prepareTestEnvironment = (
         runHook: <
             R = unknown,
             P extends Array<unknown> = Array<unknown>,
-            WP extends {children:FunctionComponentElement<{parameters:P}>} = {
-                children:FunctionComponentElement<{parameters:P}>
+            WP extends {
+                children:FunctionComponentElement<{parameters:P}>|ReactElement
+            } = {
+                children:FunctionComponentElement<{parameters:P}>|ReactElement
             }
         >(
             hook:(...parameters:P) => R,
@@ -76,7 +78,7 @@ export const prepareTestEnvironment = (
                 wrapper: null,
                 ...givenOptions
             }
-            const hookResult:{value:R} = {} as unknown as {value:R}
+            const hookResult = {} as unknown as {value:R}
 
             const TestComponent = ({parameters}:{parameters:P}) => {
                 hookResult.value = hook(...parameters)
@@ -92,7 +94,7 @@ export const prepareTestEnvironment = (
 
                 if (options.wrapper)
                     componentElement = createElement<WP>(
-                        options.wrapper.component as FunctionComponent<WP>,
+                        options.wrapper.component,
                         {
                             ...(options.wrapper.properties || {} as WP),
                             children: componentElement
@@ -102,8 +104,9 @@ export const prepareTestEnvironment = (
                 void act(():void => {
                     if (root)
                         if (options.flush)
-                            flushSync(():void =>
-                                root!.render(componentElement))
+                            flushSync(() =>
+                                root!.render(componentElement)
+                            )
                         else
                             root.render(componentElement)
                     else
