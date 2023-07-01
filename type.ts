@@ -20,7 +20,7 @@ import {Page, PaginateOptions} from 'clientnode/type'
 import {
     FunctionComponent,
     FunctionComponentElement,
-    PropsWithChildren,
+    PropsWithChildren, ReactElement,
     ReactNode,
     SyntheticEvent,
     ValidationMap,
@@ -53,8 +53,10 @@ export interface GenericFunctionComponent<P = {}> {
 // region testing
 export interface TestHookWrapper<
     P extends Array<unknown> = Array<unknown>,
-    WP extends {children:FunctionComponentElement<{parameters:P}>} = {
-        children:FunctionComponentElement<{parameters:P}>
+    WP extends {
+        children:FunctionComponentElement<{parameters:P}>|ReactElement
+    } = {
+        children:FunctionComponentElement<{parameters:P}>|ReactElement
     }
 > {
     component:FunctionComponent<WP>
@@ -68,8 +70,10 @@ export interface TestHookResult<
 }
 export interface TestHookOptions<
     P extends Array<unknown> = Array<unknown>,
-    WP extends {children:FunctionComponentElement<{parameters:P}>} = {
-        children:FunctionComponentElement<{parameters:P}>
+    WP extends {
+        children:FunctionComponentElement<{parameters:P}>|ReactElement
+    } = {
+        children:FunctionComponentElement<{parameters:P}|ReactElement>
     }
 > {
     parameters:P,
