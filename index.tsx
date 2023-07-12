@@ -19,9 +19,9 @@
 // region imports
 import Tools from 'clientnode'
 import {Page} from 'clientnode/type'
-import {ReactElement, ReactNode, useMemo} from 'react'
+import {FunctionComponent, ReactElement, useMemo} from 'react'
 
-import {GenericFunctionComponent, PaginationProperties} from './type'
+import {PaginationProperties} from './type'
 // endregion
 // region hooks
 /**
@@ -37,9 +37,7 @@ export const useMemorizedValue = <T = unknown>(
 ):T => useMemo(():T => value, dependencies)
 // endregion
 // region components
-export const Pagination:GenericFunctionComponent<
-    Partial<PaginationProperties>
-> = ({
+export const Pagination:FunctionComponent<Partial<PaginationProperties>> = ({
     boundaryCount = 1,
     className = 'pagination',
     disabled = false,
@@ -53,7 +51,7 @@ export const Pagination:GenericFunctionComponent<
     siblingCount = 1,
     total = 100,
     ...additionalProperties
-}):ReactNode => (
+}):ReactElement => (
     total > (pageSize ?? 1) ?
         <div className={className}>
             <ul {...additionalProperties}>
@@ -76,7 +74,7 @@ export const Pagination:GenericFunctionComponent<
                 )}
             </ul>
         </div> :
-        ''
+        <></>
 )
 // endregion
 // region vim modline
