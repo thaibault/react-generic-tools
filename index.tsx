@@ -34,7 +34,7 @@ import {PaginationProperties} from './type'
  */
 export const useMemorizedValue = <T = unknown>(
     value:T, ...dependencies:Array<unknown>
-):T => useMemo(():T => value, dependencies)
+):T => useMemo<T>(() => value, dependencies)
 // endregion
 // region components
 export const Pagination:FunctionComponent<Partial<PaginationProperties>> = ({
