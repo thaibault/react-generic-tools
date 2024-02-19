@@ -42,7 +42,7 @@ export const prepareTestEnvironment = (
         render: <T = HTMLElement>(
             component:ReactNode, flush = true
         ):null|T => {
-            void act(():void => {
+            void act(() => {
                 if (root)
                     if (flush)
                         flushSync(():void => root!.render(component))
