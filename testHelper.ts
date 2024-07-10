@@ -18,14 +18,13 @@
 */
 // region imports
 import {afterEach, beforeEach} from '@jest/globals'
-import {globalContext} from 'clientnode'
-import {$Global} from 'clientnode/type'
+import {$Global, globalContext} from 'clientnode'
 import {
     createElement, FunctionComponentElement, ReactElement, ReactNode
 } from 'react'
 import {flushSync} from 'react-dom'
 import {createRoot, Root as ReactRoot} from 'react-dom/client'
-import {act} from 'react-dom/test-utils'
+import {act} from 'react'
 
 import {TestHookOptions, TestEnvironment, TestHookResult} from './type'
 // endregion
@@ -148,7 +147,3 @@ export const prepareTestEnvironment = (
 }
 
 export default prepareTestEnvironment
-// region vim modline
-// vim: set tabstop=4 shiftwidth=4 expandtab:
-// vim: foldmethod=marker foldmarker=region,endregion:
-// endregion

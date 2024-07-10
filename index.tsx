@@ -17,8 +17,7 @@
     endregion
 */
 // region imports
-import Tools from 'clientnode'
-import {Page} from 'clientnode/type'
+import {Page, paginate} from 'clientnode'
 import {FunctionComponent, ReactElement, useMemo} from 'react'
 
 import {PaginationProperties} from './type'
@@ -29,7 +28,6 @@ import {PaginationProperties} from './type'
  * using previous constant complex object within a render function.
  * @param value - Value to memorize.
  * @param dependencies - Optional dependencies when to update given value.
- *
  * @returns Given cached value.
  */
 export const useMemorizedValue = <T = unknown>(
@@ -55,7 +53,7 @@ export const Pagination:FunctionComponent<Partial<PaginationProperties>> = ({
     total > (pageSize ?? 1) ?
         <div className={className}>
             <ul {...additionalProperties}>
-                {Tools.arrayPaginate({
+                {paginate({
                     boundaryCount,
                     disabled,
                     hideNextButton,
@@ -76,8 +74,4 @@ export const Pagination:FunctionComponent<Partial<PaginationProperties>> = ({
         </div> :
         <></>
 )
-// endregion
-// region vim modline
-// vim: set tabstop=4 shiftwidth=4 expandtab:
-// vim: foldmethod=marker foldmarker=region,endregion:
 // endregion

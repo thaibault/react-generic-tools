@@ -16,16 +16,16 @@
     endregion
 */
 // region imports
-import {Page, PaginateOptions} from 'clientnode/type'
+import {Page, PaginateOptions} from 'clientnode'
 import {
     FunctionComponent,
     FunctionComponentElement,
     PropsWithChildren, ReactElement,
     ReactNode,
     SyntheticEvent,
-    ValidationMap,
     WeakValidationMap
 } from 'react'
+import {ValidationMap} from 'prop-types'
 // endregion
 // region generic
 export interface GenericEvent<T = unknown> extends SyntheticEvent {
@@ -100,8 +100,4 @@ export interface PaginationProperties extends PaginateOptions {
     className:string
     render:(page:Page) => ReactNode
 }
-// endregion
-// region vim modline
-// vim: set tabstop=4 shiftwidth=4 expandtab:
-// vim: foldmethod=marker foldmarker=region,endregion:
 // endregion
