@@ -31,11 +31,11 @@ import {PaginationProperties} from './type'
  * @returns Given cached value.
  */
 export const useMemorizedValue = <T = unknown>(
-    value:T, ...dependencies:Array<unknown>
-):T => useMemo<T>(() => value, dependencies)
+    value: T, ...dependencies: Array<unknown>
+): T => useMemo<T>(() => value, dependencies)
 // endregion
 // region components
-export const Pagination:FunctionComponent<Partial<PaginationProperties>> = ({
+export const Pagination: FunctionComponent<Partial<PaginationProperties>> = ({
     boundaryCount = 1,
     className = 'pagination',
     disabled = false,
@@ -43,13 +43,13 @@ export const Pagination:FunctionComponent<Partial<PaginationProperties>> = ({
     hidePrevButton = false,
     page = 1,
     pageSize = 5,
-    render = ({page, type}):string => `${page || type}`,
+    render = ({page, type}): string => String(page) || type,
     showFirstButton = false,
     showLastButton = false,
     siblingCount = 1,
     total = 100,
     ...additionalProperties
-}):ReactElement => (
+}): ReactElement => (
     total > (pageSize ?? 1) ?
         <div className={className}>
             <ul {...additionalProperties}>
@@ -64,10 +64,13 @@ export const Pagination:FunctionComponent<Partial<PaginationProperties>> = ({
                     showLastButton,
                     siblingCount,
                     total
-                }).map((item:Page):ReactElement =>
+                }).map((item: Page): ReactElement =>
                     <li key={
                         item.type +
-                        (typeof item.page === 'number' ? `-${item.page}` : '')
+                        (typeof item.page === 'number' ?
+                            `-${String(item.page)}` :
+                            ''
+                        )
                     }>{render(item)}</li>
                 )}
             </ul>
