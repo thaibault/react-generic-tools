@@ -28,23 +28,26 @@ import {act} from 'react'
 
 import {TestHookOptions, TestEnvironment, TestHookResult} from './type'
 // endregion
-;(globalContext as $Global & {IS_REACT_ACT_ENVIRONMENT:boolean})
+;(globalContext as $Global & {IS_REACT_ACT_ENVIRONMENT: boolean})
     .IS_REACT_ACT_ENVIRONMENT = true
 
 export const prepareTestEnvironment = (
-    currentBeforeEach:typeof beforeEach, currentAfterEach:typeof afterEach
-):TestEnvironment => {
-    let root:null|ReactRoot = null
+    currentBeforeEach: typeof beforeEach, currentAfterEach: typeof afterEach
+): TestEnvironment => {
+    let root: null|ReactRoot = null
 
-    const result:TestEnvironment = {
+    const result: TestEnvironment = {
         container: null,
         render: <T = HTMLElement>(
-            component:ReactNode, flush = true
-        ):null|T => {
-            void act(() => {
+            component: ReactNode, flush = true
+        ): null|T => {
+            act(() => {
                 if (root)
                     if (flush)
-                        flushSync(():void => root!.render(component))
+                        flushSync(() => {
+                            if (root)
+                                root.render(component)
+                        })
                     else
                         root.render(component)
                 else
@@ -54,7 +57,7 @@ export const prepareTestEnvironment = (
             })
 
             return (
-                result.container?.childNodes?.length ?
+                result.container?.childNodes.length ?
                     result.container.childNodes[0] :
                     result.container
             ) as unknown as T
@@ -63,33 +66,33 @@ export const prepareTestEnvironment = (
             R = unknown,
             P extends Array<unknown> = Array<unknown>,
             WP extends {
-                children:FunctionComponentElement<{parameters:P}>|ReactElement
+                children: FunctionComponentElement<{parameters: P}>|ReactElement
             } = {
-                children:FunctionComponentElement<{parameters:P}>|ReactElement
+                children: FunctionComponentElement<{parameters: P}>|ReactElement
             }
         >(
-            hook:(...parameters:P) => R,
-            givenOptions:Partial<TestHookOptions<P, WP>> = {}
-        ):TestHookResult<R, P> => {
-            const options:TestHookOptions<P, WP> = {
+            hook: (...parameters: P) => R,
+            givenOptions: Partial<TestHookOptions<P, WP>> = {}
+        ): TestHookResult<R, P> => {
+            const options: TestHookOptions<P, WP> = {
                 flush: true,
                 parameters: [] as unknown as P,
                 wrapper: null,
                 ...givenOptions
             }
-            const hookResult = {} as unknown as {value:R}
+            const hookResult = {} as unknown as {value: R}
 
-            const TestComponent = ({parameters}:{parameters:P}) => {
+            const TestComponent = ({parameters}: {parameters: P}) => {
                 hookResult.value = hook(...parameters)
 
                 return null
             }
 
-            const render = (...parameters:P):void => {
-                let componentElement:(
-                    FunctionComponentElement<{parameters:P}> |
+            const render = (...parameters: P): void => {
+                let componentElement: (
+                    FunctionComponentElement<{parameters: P}> |
                     FunctionComponentElement<WP>
-                ) = createElement<{parameters:P}>(TestComponent, {parameters})
+                ) = createElement<{parameters: P}>(TestComponent, {parameters})
 
                 if (options.wrapper)
                     componentElement = createElement<WP>(
@@ -100,12 +103,13 @@ export const prepareTestEnvironment = (
                         } as WP
                     )
 
-                void act(():void => {
+                act(() => {
                     if (root)
                         if (options.flush)
-                            flushSync(() =>
-                                root!.render(componentElement)
-                            )
+                            flushSync(() => {
+                                if (root)
+                                    root.render(componentElement)
+                            })
                         else
                             root.render(componentElement)
                     else
@@ -127,19 +131,20 @@ export const prepareTestEnvironment = (
         document.body.appendChild(result.container)
 
         if (!root)
-            void act(() => {
-                root = createRoot(result.container!)
+            act(() => {
+                root = createRoot(result.container as HTMLDivElement)
             })
     })
 
     currentAfterEach(() => {
         if (root)
-            void act(() => {
-                root!.unmount()
+            act(() => {
+                if (root)
+                    root.unmount()
                 root = null
             })
 
-        result.container!.remove()
+        result.container?.remove()
         result.container = null
     })
 
