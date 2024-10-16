@@ -50,9 +50,9 @@ export interface GenericFunctionComponent<P = object> {
 export interface TestHookWrapper<
     P extends Array<unknown> = Array<unknown>,
     WP extends {
-        children: FunctionComponentElement<{parameters: P}>|ReactElement
+        children: FunctionComponentElement<{parameters: P}> | ReactElement
     } = {
-        children: FunctionComponentElement<{parameters: P}>|ReactElement
+        children: FunctionComponentElement<{parameters: P}> | ReactElement
     }
 > {
     component: FunctionComponent<WP>
@@ -67,25 +67,25 @@ export interface TestHookResult<
 export interface TestHookOptions<
     P extends Array<unknown> = Array<unknown>,
     WP extends {
-        children: FunctionComponentElement<{parameters: P}>|ReactElement
+        children: FunctionComponentElement<{parameters: P}> | ReactElement
     } = {
-        children: FunctionComponentElement<{parameters: P}|ReactElement>
+        children: FunctionComponentElement<{parameters: P} | ReactElement>
     }
 > {
     parameters: P,
-    wrapper?: null|TestHookWrapper<P, WP>,
+    wrapper?: null | TestHookWrapper<P, WP>,
     flush?: boolean
 }
 export interface TestEnvironment {
-    container: HTMLDivElement|null
-    render: <T = HTMLElement>(component: ReactNode) => null|T
+    container: HTMLDivElement | null
+    render: <T = HTMLElement>(component: ReactNode) => null | T
     runHook: <
         R = unknown,
         P extends Array<unknown> = Array<unknown>,
         WP extends {
-            children: FunctionComponentElement<{parameters: P}>|ReactElement
+            children: FunctionComponentElement<{parameters: P}> | ReactElement
         } = {
-            children: FunctionComponentElement<{parameters: P}>|ReactElement
+            children: FunctionComponentElement<{parameters: P}> | ReactElement
         }
     >(
         hook: (...parameters: P) => R, options: Partial<TestHookOptions<P, WP>>
