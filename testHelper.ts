@@ -34,13 +34,13 @@ import {TestHookOptions, TestEnvironment, TestHookResult} from './type'
 export const prepareTestEnvironment = (
     currentBeforeEach: typeof beforeEach, currentAfterEach: typeof afterEach
 ): TestEnvironment => {
-    let root: null|ReactRoot = null
+    let root: null | ReactRoot = null
 
     const result: TestEnvironment = {
         container: null,
         render: <T = HTMLElement>(
             component: ReactNode, flush = true
-        ): null|T => {
+        ): null | T => {
             act(() => {
                 if (root)
                     if (flush)
@@ -66,9 +66,11 @@ export const prepareTestEnvironment = (
             R = unknown,
             P extends Array<unknown> = Array<unknown>,
             WP extends {
-                children: FunctionComponentElement<{parameters: P}>|ReactElement
+                children:
+                    FunctionComponentElement<{parameters: P}> | ReactElement
             } = {
-                children: FunctionComponentElement<{parameters: P}>|ReactElement
+                children:
+                    FunctionComponentElement<{parameters: P}> | ReactElement
             }
         >(
             hook: (...parameters: P) => R,
