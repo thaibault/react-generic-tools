@@ -19,9 +19,7 @@
 // region imports
 import {afterEach, beforeEach} from '@jest/globals'
 import {$Global, globalContext} from 'clientnode'
-import {
-    createElement, FunctionComponentElement, ReactElement, ReactNode
-} from 'react'
+import {createElement, FunctionComponent, ReactElement, ReactNode} from 'react'
 import {flushSync} from 'react-dom'
 import {createRoot, Root as ReactRoot} from 'react-dom/client'
 import {act} from 'react'
@@ -66,11 +64,13 @@ export const prepareTestEnvironment = (
             R = unknown,
             P extends Array<unknown> = Array<unknown>,
             WP extends {
-                children:
-                    FunctionComponentElement<{parameters: P}> | ReactElement
+                children: ReactElement<
+                    {parameters: P}, FunctionComponent<{parameters: P}>
+                >
             } = {
-                children:
-                    FunctionComponentElement<{parameters: P}> | ReactElement
+                children: ReactElement<
+                    {parameters: P}, FunctionComponent<{parameters: P}>
+                >
             }
         >(
             hook: (...parameters: P) => R,
@@ -92,8 +92,10 @@ export const prepareTestEnvironment = (
 
             const render = (...parameters: P): void => {
                 let componentElement: (
-                    FunctionComponentElement<{parameters: P}> |
-                    FunctionComponentElement<WP>
+                    ReactElement<
+                        {parameters: P}, FunctionComponent<{parameters: P}>
+                    > |
+                    ReactElement<WP, FunctionComponent<WP>>
                 ) = createElement<{parameters: P}>(TestComponent, {parameters})
 
                 if (options.wrapper)
