@@ -19,8 +19,8 @@
 import {Page, PaginateOptions} from 'clientnode'
 import {
     FunctionComponent,
-    FunctionComponentElement,
-    PropsWithChildren, ReactElement,
+    PropsWithChildren,
+    ReactElement,
     ReactNode,
     SyntheticEvent
 } from 'react'
@@ -50,9 +50,13 @@ export interface GenericFunctionComponent<P = object> {
 export interface TestHookWrapper<
     P extends Array<unknown> = Array<unknown>,
     WP extends {
-        children: FunctionComponentElement<{parameters: P}> | ReactElement
+        children: ReactElement<
+            {parameters: P}, FunctionComponent<{parameters: P}>
+        >
     } = {
-        children: FunctionComponentElement<{parameters: P}> | ReactElement
+        children: ReactElement<
+            {parameters: P}, FunctionComponent<{parameters: P}>
+        >
     }
 > {
     component: FunctionComponent<WP>
@@ -67,9 +71,13 @@ export interface TestHookResult<
 export interface TestHookOptions<
     P extends Array<unknown> = Array<unknown>,
     WP extends {
-        children: FunctionComponentElement<{parameters: P}> | ReactElement
+        children: ReactElement<
+            {parameters: P}, FunctionComponent<{parameters: P}>
+        >
     } = {
-        children: FunctionComponentElement<{parameters: P} | ReactElement>
+        children: ReactElement<
+            {parameters: P}, FunctionComponent<{parameters: P}>
+        >
     }
 > {
     parameters: P,
@@ -83,9 +91,13 @@ export interface TestEnvironment {
         R = unknown,
         P extends Array<unknown> = Array<unknown>,
         WP extends {
-            children: FunctionComponentElement<{parameters: P}> | ReactElement
+            children: ReactElement<
+                {parameters: P}, FunctionComponent<{parameters: P}>
+            >
         } = {
-            children: FunctionComponentElement<{parameters: P}> | ReactElement
+            children: ReactElement<
+                {parameters: P}, FunctionComponent<{parameters: P}>
+            >
         }
     >(
         hook: (...parameters: P) => R, options: Partial<TestHookOptions<P, WP>>
