@@ -50,13 +50,17 @@ export interface GenericFunctionComponent<P = object> {
 export interface TestHookWrapper<
     P extends Array<unknown> = Array<unknown>,
     WP extends {
-        children: ReactElement<
-            {parameters: P}, FunctionComponent<{parameters: P}>
-        >
+        children:
+            FunctionComponent<{parameters: P}> |
+            ReactElement<
+                {parameters: P}, FunctionComponent<{parameters: P}>
+            >
     } = {
-        children: ReactElement<
-            {parameters: P}, FunctionComponent<{parameters: P}>
-        >
+        children:
+            FunctionComponent<{parameters: P}> |
+            ReactElement<
+                {parameters: P}, FunctionComponent<{parameters: P}>
+            >
     }
 > {
     component: FunctionComponent<WP>
@@ -71,13 +75,17 @@ export interface TestHookResult<
 export interface TestHookOptions<
     P extends Array<unknown> = Array<unknown>,
     WP extends {
-        children: ReactElement<
-            {parameters: P}, FunctionComponent<{parameters: P}>
-        >
+        children:
+            FunctionComponent<{parameters: P}> |
+            ReactElement<
+                {parameters: P}, FunctionComponent<{parameters: P}>
+            >
     } = {
-        children: ReactElement<
-            {parameters: P}, FunctionComponent<{parameters: P}>
-        >
+        children:
+            FunctionComponent<{parameters: P}> |
+            ReactElement<
+                {parameters: P}, FunctionComponent<{parameters: P}>
+            >
     }
 > {
     parameters: P,
