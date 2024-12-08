@@ -64,9 +64,11 @@ export const prepareTestEnvironment = (
             R = unknown,
             P extends Array<unknown> = Array<unknown>,
             WP extends {
-                children: ReactElement<
-                    {parameters: P}, FunctionComponent<{parameters: P}>
-                >
+                children:
+                    FunctionComponent<{parameters: P}> |
+                    ReactElement<
+                        {parameters: P}, FunctionComponent<{parameters: P}>
+                    >
             } = {
                 children: ReactElement<
                     {parameters: P}, FunctionComponent<{parameters: P}>
