@@ -76,7 +76,13 @@ export const prepareTestEnvironment = (
             }
         >(
             hook: (...parameters: P) => R,
+            /*
+                eslint-disable @typescript-eslint/no-useless-default-assignment
+            */
             givenOptions: Partial<TestHookOptions<P, WP>> = {}
+            /*
+                eslint-enable @typescript-eslint/no-useless-default-assignment
+            */
         ): TestHookResult<R, P> => {
             const options: TestHookOptions<P, WP> = {
                 flush: true,
