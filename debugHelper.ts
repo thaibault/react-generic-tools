@@ -17,44 +17,42 @@
     endregion
 */
 // region imports
-import {equals, Logger} from 'clientnode'
+import {Logger} from 'clientnode'
 import {useEffect, useRef} from 'react'
 // endregion
 export const log =
     new Logger({name: 'react-generic-tools-logger', level: 'debug'})
 
 export interface ChangedValue<Type> {
-    name?: string
+    path: Array<string>
     oldValue: Type
     newValue: Type
 }
-export const getChanges = <Type, SubValue>(oldValue: Type, newValue: Type)=> {
+export const getChanges = <Type, SubValue>(
+    oldValue: Type, newValue: Type, path: Array<string> = []
+)=> {
+    if (oldValue === newValue)
+        return []
+
     if (
         typeof oldValue === 'object' &&
         oldValue !== null &&
         typeof newValue === 'object' &&
         newValue !== null
     ) {
-        const changes: Array<ChangedValue<SubValue>> = []
+        let changes: Array<ChangedValue<SubValue>> = []
         for (const [name, subNewValue] of Object.entries(newValue)) {
             const subOldValue = oldValue[name as keyof Type]
 
-            if (!equals(subNewValue, oldValue))
-                changes.push({
-                    name,
-                    oldValue: subOldValue as SubValue,
-                    newValue: subNewValue
-                })
+            changes = changes.concat(
+                getChanges(subOldValue, subNewValue, path.concat(name))
+            )
         }
 
         return changes
     }
 
-    // Handle primitive values
-    if (oldValue !== newValue)
-        return [{oldValue: oldValue, newValue: newValue}]
-
-    return []
+    return [{oldValue: oldValue, newValue: newValue, path}]
 }
 
 export const useOldValue = <Type>(value: Type) => {
@@ -75,6 +73,9 @@ export const useLogChanges = <Type>(value: Type)=> {
     const changes = getChanges(previousValue, value)
 
     if (changes.length)
-        for (const change of changes)
-            log.debug(change)
+        for (const {path, oldValue, newValue} of changes)
+            log.debug(
+                `Change found in "${path.join('.')}": old value:`,
+                `"${String(oldValue)}"; new value: "${String(newValue)}"`
+            )
 }
