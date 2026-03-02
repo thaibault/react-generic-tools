@@ -35,10 +35,8 @@ export const getChanges = <Type, SubValue>(
         return []
 
     if (
-        typeof oldValue === 'object' &&
-        oldValue !== null &&
-        typeof newValue === 'object' &&
-        newValue !== null
+        oldValue !== null && typeof oldValue === 'object' &&
+        newValue !== null && typeof newValue === 'object'
     ) {
         let changes: Array<ChangedValue<SubValue>> = []
         for (const [name, subNewValue] of Object.entries(newValue)) {
