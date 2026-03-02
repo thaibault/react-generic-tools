@@ -21,7 +21,7 @@
   },
   "files": [
     "debugHelper.d.ts",
-    "debugHelper.ts",
+    "debugHelper.js",
     "endToEndTestHelper.d.ts",
     "endToEndTestHelper.js",
     "index.d.ts",
