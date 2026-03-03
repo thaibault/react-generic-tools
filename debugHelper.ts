@@ -17,7 +17,7 @@
     endregion
 */
 // region imports
-import {Logger} from 'clientnode'
+import {limit, Logger, represent} from 'clientnode'
 import {useEffect, useRef} from 'react'
 // endregion
 export const log =
@@ -35,10 +35,8 @@ export const getChanges = <Type, SubValue>(
         return []
 
     if (
-        typeof oldValue === 'object' &&
-        oldValue !== null &&
-        typeof newValue === 'object' &&
-        newValue !== null
+        oldValue !== null && typeof oldValue === 'object' &&
+        newValue !== null && typeof newValue === 'object'
     ) {
         let changes: Array<ChangedValue<SubValue>> = []
         for (const [name, subNewValue] of Object.entries(newValue)) {
@@ -73,9 +71,15 @@ export const useLogChanges = <Type>(value: Type)=> {
     const changes = getChanges(previousValue, value)
 
     if (changes.length)
-        for (const {path, oldValue, newValue} of changes)
+        for (const {path, oldValue, newValue} of changes) {
+            const locator = path.length > 1 ?
+                ` in "${path.join('.')}"` :
+                ''
+
             log.debug(
-                `Change found in "${path.join('.')}": old value:`,
-                `"${String(oldValue)}"; new value: "${String(newValue)}"`
+                `Change found${locator}; old value:`,
+                `"${limit(represent(oldValue))}"; new value:`,
+                `"${limit(represent(newValue))}"`
             )
+        }
 }
