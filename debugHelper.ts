@@ -66,20 +66,22 @@ export const useOldValue = <Type>(value: Type) => {
     return reference.current
 }
 
-export const useLogChanges = <Type>(value: Type)=> {
-    const previousValue = useOldValue<Type>(value)
-    const changes = getChanges(previousValue, value)
+export const useLogChanges = <Type>(
+    value: Type, description: Array<string> | string = []
+)=> {
+    const oldValue = useOldValue<Type>(value)
+    const changes =
+        getChanges(oldValue, value, ([] as Array<string>).concat(description))
 
-    if (changes.length)
-        for (const {path, oldValue, newValue} of changes) {
-            const locator = path.length > 1 ?
-                ` in "${path.join('.')}"` :
-                ''
+    for (const {path, oldValue, newValue} of changes) {
+        const locator = path.length > 0 ?
+            ` in "${path.join('.')}"` :
+            ''
 
-            log.debug(
-                `Change found${locator}; old value:`,
-                `"${limit(represent(oldValue))}"; new value:`,
-                `"${limit(represent(newValue))}"`
-            )
-        }
+        log.debug(
+            `Change found${locator}; old value:`,
+            `"${limit(represent(oldValue))}"; new value:`,
+            `"${limit(represent(newValue))}"`
+        )
+    }
 }
