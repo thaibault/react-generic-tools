@@ -29,7 +29,10 @@ export interface ChangedValue<Type> {
     newValue: Type
 }
 export const getChanges = <Type, SubValue>(
-    oldValue: Type, newValue: Type, path: Array<string> = []
+    oldValue: Type,
+    newValue: Type,
+    path: Array<string> = [],
+    recursiveLimit = 10
 )=> {
     if (oldValue === newValue)
         return []
@@ -38,12 +41,24 @@ export const getChanges = <Type, SubValue>(
         oldValue !== null && typeof oldValue === 'object' &&
         newValue !== null && typeof newValue === 'object'
     ) {
+        if (recursiveLimit === 0)
+            return [{
+                oldValue: oldValue,
+                newValue: newValue,
+                path: path.concat('__RECURSIVE_LIMIT_REACHED__')
+            }]
+
         let changes: Array<ChangedValue<SubValue>> = []
         for (const [name, subNewValue] of Object.entries(newValue)) {
             const subOldValue = oldValue[name as keyof Type]
 
             changes = changes.concat(
-                getChanges(subOldValue, subNewValue, path.concat(name))
+                getChanges(
+                    subOldValue,
+                    subNewValue,
+                    path.concat(name),
+                    recursiveLimit - 1
+                )
             )
         }
 
@@ -67,11 +82,15 @@ export const useOldValue = <Type>(value: Type) => {
 }
 
 export const useLogChanges = <Type>(
-    value: Type, description: Array<string> | string = []
+    value: Type, description: Array<string> | string = [], recursiveLimit = 10
 )=> {
     const oldValue = useOldValue<Type>(value)
-    const changes =
-        getChanges(oldValue, value, ([] as Array<string>).concat(description))
+    const changes = getChanges(
+        oldValue,
+        value,
+        ([] as Array<string>).concat(description),
+        recursiveLimit
+    )
 
     for (const {path, oldValue, newValue} of changes) {
         const locator = path.length > 0 ?
