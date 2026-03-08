@@ -70,7 +70,7 @@
     "@typescript-eslint/parser": "^8.56.1",
     "clientnode": "^4.0.1355",
     "documentation-website": "^1.0.398",
-    "eslint": "^10.0.2",
+    "eslint": "^10.0.3",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-jsdoc": "^62.7.1",
     "jest": "^30.2.0",
