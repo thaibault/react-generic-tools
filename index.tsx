@@ -18,7 +18,7 @@
 */
 // region imports
 import {Page, paginate} from 'clientnode'
-import {FunctionComponent, ReactElement, useMemo} from 'react'
+import {FunctionComponent, ReactElement, useMemo, useState} from 'react'
 
 import {PaginationProperties} from './type'
 // endregion
@@ -33,6 +33,23 @@ import {PaginationProperties} from './type'
 export const useMemorizedValue = <T = unknown>(
     value: T, ...dependencies: Array<unknown>
 ): T => useMemo<T>(() => value, dependencies)
+/**
+ * Use state wrapper to deal with references. It only sets a new state if the
+ * given reference isn't null.
+ * @param initialValue - To set state to.
+ * @returns Whatever "useState" would return.
+ */
+export const useReferenceState = (<T = unknown>(initialValue: T) => {
+    const [value, setValue] = useState<T>(initialValue)
+
+    return [
+        value,
+        useMemorizedValue((reference: T | null) => {
+            if (reference !== null)
+                setValue(reference)
+        })
+    ]
+}) as typeof useState
 // endregion
 // region components
 export const Pagination: FunctionComponent<Partial<PaginationProperties>> = ({
