@@ -34,7 +34,7 @@ export const getChanges = <Type, SubValue>(
     path: Array<string> = [],
     recursiveLimit = 10
 )=> {
-    if (oldValue === newValue)
+    if (Object.is(oldValue, newValue))
         return []
 
     if (
