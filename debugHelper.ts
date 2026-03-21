@@ -39,7 +39,11 @@ export const getChanges = <Type, SubValue>(
 
     if (
         oldValue !== null && typeof oldValue === 'object' &&
-        newValue !== null && typeof newValue === 'object'
+        !Array.isArray(oldValue) &&
+        !(typeof Blob !== 'undefined' && oldValue instanceof Blob) &&
+        newValue !== null && typeof newValue === 'object' &&
+        !Array.isArray(newValue) &&
+        !(typeof Blob !== 'undefined' && newValue instanceof Blob)
     ) {
         if (recursiveLimit === 0)
             return [{
