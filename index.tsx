@@ -40,7 +40,7 @@ export const useMemorizedValue = <T = unknown>(
  * @returns Whatever "useState" would return.
  */
 export const useReferenceState = (<T = unknown>(initialValue: T) => {
-    const [value, setValue] = useState<T>(initialValue)
+    const [value, setValue] = useState(initialValue)
 
     return [
         value,
