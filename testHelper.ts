@@ -18,7 +18,7 @@
 */
 // region imports
 import {afterEach, beforeEach} from '@jest/globals'
-import {$Global, globalContext} from 'clientnode'
+import {globalContext} from 'clientnode'
 import {createElement, FunctionComponent, ReactElement, ReactNode} from 'react'
 import {flushSync} from 'react-dom'
 import {createRoot, Root as ReactRoot} from 'react-dom/client'
@@ -26,7 +26,7 @@ import {act} from 'react'
 
 import {TestHookOptions, TestEnvironment, TestHookResult} from './type'
 // endregion
-;(globalContext as $Global & {IS_REACT_ACT_ENVIRONMENT: boolean})
+;(globalContext as typeof globalContext & {IS_REACT_ACT_ENVIRONMENT: boolean})
     .IS_REACT_ACT_ENVIRONMENT = true
 
 export const prepareTestEnvironment = (
@@ -104,10 +104,10 @@ export const prepareTestEnvironment = (
                         {parameters: P}, FunctionComponent<{parameters: P}>
                     > |
                     ReactElement<WP, FunctionComponent<WP>>
-                ) = createElement<{parameters: P}>(TestComponent, {parameters})
+                ) = createElement(TestComponent, {parameters})
 
                 if (options.wrapper)
-                    componentElement = createElement<WP>(
+                    componentElement = createElement(
                         options.wrapper.component,
                         {
                             ...(options.wrapper.properties || {} as WP),

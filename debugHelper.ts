@@ -89,7 +89,7 @@ export const useOldValue = <Type>(value: Type) => {
 export const useLogChanges = <Type>(
     value: Type, description: Array<string> | string = [], recursiveLimit = 10
 )=> {
-    const oldValue = useOldValue<Type>(value)
+    const oldValue = useOldValue(value)
     const changes = getChanges(
         oldValue,
         value,
