@@ -71,3 +71,21 @@ export const formatEndUserTime = (date: Date) =>
     */
     `${String(date.getHours()).padStart(2, '0')}:` +
     String(date.getMinutes()).padStart(2, '0')
+export const forwardLogging = (page: Page) => {
+    page.on(
+        'console',
+        ((message) => {
+            const type = message.type()
+                .replace('warning', 'warn')
+                .replace('verbose', 'debug') as
+                'info'
+            if (typeof console[type] === 'function')
+                console[type](message.text())
+            else
+                console.error(
+                    `Could not forward message of type "${type}":`,
+                    message.text()
+                )
+        })
+    )
+}
