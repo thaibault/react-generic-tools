@@ -145,6 +145,16 @@
       ]
     },
     "module": {
+      "optimizer": {
+        "babelMinify": {
+          "bundle": {
+            "transform": {
+              "#": "To provide a logging output we need to exclude this feature.",
+              "removeConsole": false
+            }
+          }
+        }
+      },
       "preprocessor": {
         "javaScript": {
           "options": {
