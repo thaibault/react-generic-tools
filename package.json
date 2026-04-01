@@ -152,6 +152,10 @@
               "#": "To provide a logging output we need to exclude this feature.",
               "removeConsole": false
             }
+          },
+          "module": {
+            "#": "To provide a logging output we need to exclude this feature.",
+            "removeConsole": false
           }
         }
       },
