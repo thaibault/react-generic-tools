@@ -52,7 +52,6 @@
     "update:documentation": "web-documentation",
     "watch": "weboptimizer build --watch"
   },
-  "runkitExample": "require('@babel/runtime/package.json')\n\nglobalThis.window = globalThis\n\nconst {useMemorizedValue} = require('react-generic-tools')\n\nconst value = useMemorizedValue({date: 'content'})",
   "devDependencies": {
     "@babel/eslint-parser": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
