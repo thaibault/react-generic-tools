@@ -23,7 +23,7 @@ Project status
 [![lint](https://img.shields.io/github/actions/workflow/status/thaibault/react-generic-tools/lint.yaml?label=lint&style=for-the-badge)](https://github.com/thaibault/react-generic-tools/actions/workflows/lint.yaml)
 
 [![deploy web documentation](https://img.shields.io/github/actions/workflow/status/thaibault/react-generic-tools/deploy-web-documentation.yaml?label=deploy%20web%20documentation&style=for-the-badge)](https://github.com/thaibault/react-generic-tools/actions/workflows/deploy-web-documentation.yaml)
-[![documentation website](https://img.shields.io/website-up-down-green-red/https/torben.website/react-generic-tools.svg?label=documentation-website&style=for-the-badge)](https://torben.website/react-generic-tools)
+[![documentation website](https://img.shields.io/website-up-down-green-red/https/torben.website/react-generic-tools.svg?label=web-documentation&style=for-the-badge)](https://torben.website/react-generic-tools)
 
 Use case
 --------
