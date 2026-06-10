@@ -10390,7 +10390,7 @@ __metadata:
     react-dom: "npm:^19.2.7"
     tslib: "npm:^2.8.1"
     typescript-eslint: "npm:^8.61.0"
-    web-documentation: "npm:^1.0.31"
+    web-documentation: "npm:^1.0.34"
     weboptimizer: "npm:^3.0.24"
     webpack-dev-server: "npm:^5.2.4"
   peerDependencies:
@@ -12202,12 +12202,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"web-documentation@npm:^1.0.31":
-  version: 1.0.31
-  resolution: "web-documentation@npm:1.0.31"
+"web-documentation@npm:^1.0.34":
+  version: 1.0.34
+  resolution: "web-documentation@npm:1.0.34"
   bin:
     web-documentation: build/deploy.js
-  checksum: 10c0/e2e02ce519b864f719e007358699c2e4137007478198473dca4c5c1fe2a06a65cb832edc0c9573a51a174e8ae67faf9108934b8e9d67c7276beb5ab0c1b5550f
+  checksum: 10c0/348ca467b53fcd733945cdf97e9a15547e9fd51033ceb9ad8506f96020e694065cb9090acc31308a5f2aac4b52eabd166a450b40acff66353f45fa455fddc060
   languageName: node
   linkType: hard
 
