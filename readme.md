@@ -54,6 +54,7 @@ import {useMemorizedValue, useReferenceState} from 'react-generic-tools'
 // ...
 ```
 
+<!--|deDE:Testbeispiel-->
 Testing example
 ---------------
 
