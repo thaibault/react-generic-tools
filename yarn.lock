@@ -6035,9 +6035,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clientnode@npm:^4.0.1421":
-  version: 4.0.1421
-  resolution: "clientnode@npm:4.0.1421"
+"clientnode@npm:^4.0.1422":
+  version: 4.0.1422
+  resolution: "clientnode@npm:4.0.1422"
   peerDependencies:
     "@babel/runtime": "*"
     "@types/prop-types": "*"
@@ -6052,7 +6052,7 @@ __metadata:
       optional: true
     prop-types:
       optional: true
-  checksum: 10c0/85d8349c77072477fff101f541e568a3227ca290733ce35ed15df1c5f80b8ac3c201bac390535fde911423507e7aa05bfd9d59fa27c16fa2f4d41ce9df0ff163
+  checksum: 10c0/218f7acd6cf9b3c7330f5f3e585ea7e1c03d5bc483617b52fd76866326cab4a7d194b7d068c1542d6d30a12f32d809e05c5fc04499cb21a3804d93706a387b83
   languageName: node
   linkType: hard
 
@@ -10380,7 +10380,7 @@ __metadata:
     "@types/webpack-env": "npm:^1.18.8"
     "@typescript-eslint/eslint-plugin": "npm:^8.61.0"
     "@typescript-eslint/parser": "npm:^8.61.0"
-    clientnode: "npm:^4.0.1421"
+    clientnode: "npm:^4.0.1422"
     eslint: "npm:^10.4.1"
     eslint-config-google: "npm:^0.14.0"
     eslint-plugin-jsdoc: "npm:^63.0.2"

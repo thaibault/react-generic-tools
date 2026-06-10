@@ -28,7 +28,10 @@ Project status
 Use case
 --------
 
-React utilities for simple state caching, types and testing. 
+React utilities for simple state caching, types and testing.
+<!--deDE:
+    React-Hilfsfunktionen für einfaches State-Caching, Typen und Tests.
+-->
 
 <!--|deDE:Installation-->
 Installation
