@@ -118,6 +118,10 @@
   },
   "sideEffects": false,
   "documentationWebsite": {
+    "languages": [
+      "deDE",
+      "enUS"
+    ],
     "tagline": "Generic react utilities.",
     "trackingCode": "TODO"
   },
