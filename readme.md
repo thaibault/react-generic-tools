@@ -29,3 +29,19 @@ Use case
 --------
 
 Generic react utilities.
+
+<!--|deDE:Installation-->
+Installation
+------------
+
+You can install via package manager, simply download the compiled version as
+zip file here and inject or request via cdn in HTML:
+<!--deDE:
+    Sie können das Paket über den Paketmanager installieren oder einfach die
+    kompilierte Version als ZIP-Datei hier herunterladen und in HTML einbinden
+    oder über ein CDN abrufen:
+-->
+
+```bash
+npm install react-generic-tools
+```
