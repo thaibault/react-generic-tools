@@ -34,12 +34,11 @@ React utilities for simple state caching, types and testing.
 Installation
 ------------
 
-You can install via package manager, simply download the compiled version as
-zip file here and inject or request via cdn in HTML:
+You can install via package manager or simply download the compiled version as
+zip file here and inject:
 <!--deDE:
     Sie können das Paket über den Paketmanager installieren oder einfach die
-    kompilierte Version als ZIP-Datei hier herunterladen und in HTML einbinden
-    oder über ein CDN abrufen:
+    kompilierte Version als ZIP-Datei hier herunterladen und einbinden:
 -->
 
 ```bash
