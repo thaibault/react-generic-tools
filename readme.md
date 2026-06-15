@@ -28,20 +28,52 @@ Project status
 Use case
 --------
 
-Generic react utilities.
+React utilities for simple state caching, types and testing.
+<!--deDE:
+    React-Hilfsfunktionen für einfaches State-Caching, Typen und Tests.
+-->
 
 <!--|deDE:Installation-->
 Installation
 ------------
 
-You can install via package manager, simply download the compiled version as
-zip file here and inject or request via cdn in HTML:
+You can install via package manager or simply download the compiled version as
+zip file here and inject:
 <!--deDE:
     Sie können das Paket über den Paketmanager installieren oder einfach die
-    kompilierte Version als ZIP-Datei hier herunterladen und in HTML einbinden
-    oder über ein CDN abrufen:
+    kompilierte Version als ZIP-Datei hier herunterladen und einbinden:
 -->
 
 ```bash
 npm install react-generic-tools
+```
+
+```TypeScript
+import {useMemorizedValue, useReferenceState} from 'react-generic-tools'
+
+// ...
+```
+
+<!--|deDE:Testbeispiel-->
+Testing example
+---------------
+
+```TypeScript
+import {formatEndUserTime} from 'react-generic-tools/endToEndTestHelper'
+import {expect, test} from '@playwright/test'
+
+test(
+    'Interval can get start and end values via harness.',
+    async ({page}) => {
+        // given
+        await page.goto('/')
+        await page.locator('.tab-bar__tap-interval').click()
+
+        // when
+        const now = new Date()
+        const formattedStartTime = formatEndUserTime(now)
+
+       // ...
+    }
+)
 ```
