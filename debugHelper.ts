@@ -21,7 +21,7 @@ import {limit, Logger, represent} from 'clientnode'
 import {useEffect, useRef} from 'react'
 // endregion
 export const log =
-    new Logger({name: 'react-generic-tools-logger', level: 'debug'})
+    new Logger({name: 'react-generic-tools.debug-helper', level: 'debug'})
 
 export interface ChangedValue<Type> {
     path: Array<string>
