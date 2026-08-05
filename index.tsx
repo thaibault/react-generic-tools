@@ -33,16 +33,18 @@ import {useMemo, useState} from 'react'
  * @param dependencies - Optional dependencies when to update given value.
  * @returns Given cached value.
  */
-export const useMemorizedValue = <T = unknown>(
+export function useMemorizedValue<T = unknown>(
     value: T, ...dependencies: Array<unknown>
-): T => useMemo<T>(() => value, dependencies)
+): T {
+    return useMemo<T>(() => value, dependencies)
+}
 /**
  * Use state wrapper to deal with references. It only sets a new state if the
  * given reference isn't null.
  * @param initialValue - To set state to.
  * @returns Whatever "useState" would return.
  */
-export const useReferenceState = (<T = unknown>(initialValue: T) => {
+export const useReferenceState = (function<T = unknown>(initialValue: T) {
     const [value, setValue] = useState(initialValue)
 
     return [
