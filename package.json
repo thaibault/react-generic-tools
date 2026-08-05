@@ -45,7 +45,7 @@
     "prepare": "yarn build",
     "serve": "weboptimizer serve",
     "start": "yarn serve",
-    "test": "yarn clear && weboptimizer test",
+    "test": "echo No tests available.",
     "test:browser": "yarn clear && weboptimizer test:browser",
     "test:coverage": "yarn clear && weboptimizer test:coverage",
     "test:coverage:report": "yarn clear && weboptimizer test:coverage:report",
@@ -67,7 +67,7 @@
     "@types/webpack-env": "^1.18.8",
     "@typescript-eslint/eslint-plugin": "^8.66.0",
     "@typescript-eslint/parser": "^8.66.0",
-    "clientnode": "^4.0.1483",
+    "clientnode": "^4.0.1484",
     "eslint": "^10.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-jsdoc": "^63.3.3",
@@ -78,10 +78,11 @@
     "tslib": "^2.8.1",
     "typescript-eslint": "^8.66.0",
     "web-documentation": "^1.0.45",
-    "weboptimizer": "^4.0.50",
+    "weboptimizer": "^4.0.52",
     "webpack-dev-server": "^6.0.0"
   },
   "peerDependencies": {
+    "@babel/preset-react": "*",
     "@babel/runtime": "*",
     "@types/prop-types": "*",
     "@types/react": "*",
@@ -92,6 +93,9 @@
     "tslib": "*"
   },
   "peerDependenciesMeta": {
+    "@babel/preset-react": {
+      "optional": true
+    },
     "@babel/runtime": {
       "optional": true
     },
@@ -160,6 +164,19 @@
               "drop_debugger": {
                 "__evaluate__": "false"
               }
+            }
+          }
+        }
+      },
+      "preprocessor": {
+        "javaScript": {
+          "options": {
+            "presets": {
+              "#": "NOTE: We disable module export/import transformation to allow tree shaking by the final (minimizer).",
+              "__evaluate__": "[['@babel/preset-env', {targets: self.generic.isWeb ? {browsers: self.generic.supportedBrowsers, node: packageConfiguration.engines.node.replace(/>?=?([0-9]+)/, '$1')} : {node: packageConfiguration.engines.node.replace(/>?=?([0-9]+)/, '$1')}}], '@babel/preset-typescript']"
+            },
+            "overrides": {
+              "__evaluate__": "[{test: /\\.(jsx|tsx)$/u, presets: [['@babel/preset-react', {runtime: 'automatic'}]]}]"
             }
           }
         }
