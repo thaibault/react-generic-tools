@@ -1706,13 +1706,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "@babel/runtime@npm:8.0.0"
-  checksum: 10c0/450857cf52b3a3935d4aad505277201361c86185dad3bdd2ae083d78b76c6265c7fc7610e170c80de1b825d5bfdcfb50697f0853fff922b2661c91cff1fbbd81
-  languageName: node
-  linkType: hard
-
 "@babel/template@npm:^7.25.9":
   version: 7.25.9
   resolution: "@babel/template@npm:7.25.9"
@@ -9323,7 +9316,6 @@ __metadata:
   dependencies:
     "@babel/eslint-parser": "npm:^8.0.1"
     "@babel/preset-react": "npm:^8.0.1"
-    "@babel/runtime": "npm:^8.0.0"
     "@eslint/js": "npm:^10.0.1"
     "@playwright/test": "npm:^1.62.1"
     "@stylistic/eslint-plugin": "npm:^5.10.0"
@@ -9350,7 +9342,6 @@ __metadata:
     webpack-dev-server: "npm:^6.0.0"
   peerDependencies:
     "@babel/preset-react": "*"
-    "@babel/runtime": "*"
     "@types/prop-types": "*"
     "@types/react": "*"
     "@types/react-dom": "*"
@@ -9360,8 +9351,6 @@ __metadata:
     tslib: "*"
   peerDependenciesMeta:
     "@babel/preset-react":
-      optional: true
-    "@babel/runtime":
       optional: true
     "@types/react":
       optional: true
