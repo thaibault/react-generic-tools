@@ -16,15 +16,15 @@
     endregion
 */
 // region imports
-import {Page, PaginateOptions} from 'clientnode'
-import {
+import type {Page, PaginateOptions} from 'clientnode'
+import type {
     FunctionComponent,
     PropsWithChildren,
     ReactElement,
     ReactNode,
     SyntheticEvent
 } from 'react'
-import {ValidationMap} from 'prop-types'
+import type {ValidationMap} from 'prop-types'
 // endregion
 // region generic
 export interface GenericEvent<T = unknown> extends SyntheticEvent {

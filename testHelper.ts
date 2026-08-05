@@ -17,14 +17,17 @@
     endregion
 */
 // region imports
+import type {FunctionComponent, ReactElement, ReactNode} from 'react'
+import type {Root as ReactRoot} from 'react-dom/client'
+
+import type {TestHookOptions, TestEnvironment, TestHookResult} from './type'
+
 import {afterEach, beforeEach} from '@jest/globals'
 import {globalContext} from 'clientnode'
-import {createElement, FunctionComponent, ReactElement, ReactNode} from 'react'
+import {createElement} from 'react'
 import {flushSync} from 'react-dom'
-import {createRoot, Root as ReactRoot} from 'react-dom/client'
+import {createRoot} from 'react-dom/client'
 import {act} from 'react'
-
-import {TestHookOptions, TestEnvironment, TestHookResult} from './type'
 // endregion
 ;(globalContext as typeof globalContext & {IS_REACT_ACT_ENVIRONMENT: boolean})
     .IS_REACT_ACT_ENVIRONMENT = true

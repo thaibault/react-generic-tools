@@ -17,10 +17,13 @@
     endregion
 */
 // region imports
-import {Page, paginate} from 'clientnode'
-import {FunctionComponent, ReactElement, useMemo, useState} from 'react'
+import type {Page} from 'clientnode'
+import type {FunctionComponent, ReactElement} from 'react'
 
-import {PaginationProperties} from './type'
+import type {PaginationProperties} from './type'
+
+import {paginate} from 'clientnode'
+import {useMemo, useState} from 'react'
 // endregion
 // region hooks
 /**
