@@ -16,9 +16,8 @@
     See https://creativecommons.org/licenses/by/3.0/deed.de
     endregion
 */
-
 // region imports
-import {Locator, Page} from 'playwright-core'
+import type {Locator, Page} from 'playwright-core'
 
 import {expect} from '@playwright/test'
 // endregion
@@ -34,8 +33,8 @@ export const isSameLocator =
 
         return firstLocator.page().evaluate(
             (compare) => {
-                if (!compare.left)
-                    return compare.left === compare.right
+                if (compare.left === compare.right)
+                    return true
 
                 return compare.left.isEqualNode(compare.right)
             },
