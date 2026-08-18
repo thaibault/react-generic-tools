@@ -13,12 +13,17 @@
     "url": "https://github.com/thaibault/react-generic-tools/issues"
   },
   "license": "CC-BY-3.0",
-  "main": "index.js",
   "author": {
-    "name": "Torben Sickert",
     "email": "info@torben.website",
+    "name": "Torben Sickert",
     "url": "https://torben.website"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thaibault/react-generic-tools"
+  },
+  "type": "module",
+  "main": "index.js",
   "files": [
     "debugHelper.d.ts",
     "debugHelper.js",
@@ -29,10 +34,7 @@
     "testHelper.js",
     "type.d.ts"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thaibault/react-generic-tools"
-  },
+  "sideEffects": false,
   "scripts": {
     "build": "yarn build:types; yarn build:plain",
     "build:plain": "weboptimizer build",
@@ -110,13 +112,16 @@
       "optional": true
     }
   },
+  "resolutions": {
+    "globals@npm:^11.1.0": "patch:globals@npm%3A11.12.0#~/.yarn/patches/globals-npm-11.12.0-1fa7f41a6c.patch",
+    "globals@npm:^14.0.0": "patch:globals@npm%3A11.12.0#~/.yarn/patches/globals-npm-11.12.0-1fa7f41a6c.patch",
+    "globals@npm:^9.18.0": "patch:globals@npm%3A11.12.0#~/.yarn/patches/globals-npm-11.12.0-1fa7f41a6c.patch"
+  },
   "engines": {
     "node": ">=24",
     "npm": ">=11",
     "yarn": ">=4"
   },
-  "sideEffects": false,
-  "type": "module",
   "webDocumentation": {
     "languages": [
       "deDE",
@@ -137,8 +142,8 @@
       "entry": {
         "debugHelper": "./debugHelper",
         "endToEndTestHelper": "./endToEndTestHelper",
-        "testHelper": "./testHelper",
         "index": "./index.ts",
+        "testHelper": "./testHelper",
         "type": "./type"
       },
       "supportedBrowsers": [
@@ -166,22 +171,17 @@
       "preprocessor": {
         "javaScript": {
           "options": {
+            "overrides": {
+              "__evaluate__": "[{test: /\\.(jsx|tsx)$/u, presets: [['@babel/preset-react', {runtime: 'automatic'}]]}]"
+            },
             "presets": {
               "#": "NOTE: We disable module export/import transformation to allow tree shaking by the final (minimizer).",
               "__evaluate__": "[['@babel/preset-env', {targets: self.generic.isWeb ? {browsers: self.generic.supportedBrowsers, node: packageConfiguration.engines.node.replace(/>?=?([0-9]+)/, '$1')} : {node: packageConfiguration.engines.node.replace(/>?=?([0-9]+)/, '$1')}}], '@babel/preset-typescript']"
-            },
-            "overrides": {
-              "__evaluate__": "[{test: /\\.(jsx|tsx)$/u, presets: [['@babel/preset-react', {runtime: 'automatic'}]]}]"
             }
           }
         }
       }
     }
   },
-  "packageManager": "yarn@4.14.1+sha512.64df448055b2d37ba269d7db535a469b8da93f8ef1140c25fd7a83c00a8fbaacb214ca0e02553b92a2c54cef78bb67d0b4817fab02001df0e24fac0faccc3b42",
-  "resolutions": {
-    "globals@npm:^11.1.0": "patch:globals@npm%3A11.12.0#~/.yarn/patches/globals-npm-11.12.0-1fa7f41a6c.patch",
-    "globals@npm:^14.0.0": "patch:globals@npm%3A11.12.0#~/.yarn/patches/globals-npm-11.12.0-1fa7f41a6c.patch",
-    "globals@npm:^9.18.0": "patch:globals@npm%3A11.12.0#~/.yarn/patches/globals-npm-11.12.0-1fa7f41a6c.patch"
-  }
+  "packageManager": "yarn@4.14.1+sha512.64df448055b2d37ba269d7db535a469b8da93f8ef1140c25fd7a83c00a8fbaacb214ca0e02553b92a2c54cef78bb67d0b4817fab02001df0e24fac0faccc3b42"
 }
