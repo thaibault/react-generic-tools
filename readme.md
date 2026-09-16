@@ -35,7 +35,6 @@ React utilities for simple state caching, types and testing.
     React-Hilfsfunktionen für einfaches State-Caching, Typen und Tests.
 -->
 
-<!--|deDE:Installation-->
 Installation
 ------------
 
@@ -56,9 +55,9 @@ import {useMemorizedValue, useReferenceState} from 'react-generic-tools'
 // ...
 ```
 
-<!--|deDE:Testbeispiel-->
-Testing example
----------------
+<!--|deDE:Beispiel-->
+Example
+-------
 
 ```TypeScript
 import {formatEndUserTime} from 'react-generic-tools/endToEndTestHelper'
