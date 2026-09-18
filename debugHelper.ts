@@ -102,7 +102,7 @@ export const useLogChanges = <Type>(
             ` in "${path.join('.')}"` :
             ''
 
-        log.debug(
+        void log.debug(
             `Change found${locator}; old value:`,
             `"${limit(represent(oldValue))}"; new value:`,
             `"${limit(represent(newValue))}"`
