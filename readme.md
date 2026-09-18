@@ -10,6 +10,7 @@ This library written by Torben Sickert stands under a creative commons naming
 3.0 unported license. See https://creativecommons.org/licenses/by/3.0/deed.de
 endregion -->
 
+<!--|deDE:Projektstatus-->
 Project status
 --------------
 
@@ -25,6 +26,7 @@ Project status
 [![deploy web documentation](https://img.shields.io/github/actions/workflow/status/thaibault/react-generic-tools/deploy-web-documentation.yaml?label=deploy%20web%20documentation&style=for-the-badge)](https://github.com/thaibault/react-generic-tools/actions/workflows/deploy-web-documentation.yaml)
 [![web documentation](https://img.shields.io/website-up-down-green-red/https/torben.website/react-generic-tools.svg?label=web-documentation&style=for-the-badge)](https://torben.website/react-generic-tools)
 
+<!--|deDE:Verwendung-->
 Use case
 --------
 
@@ -33,7 +35,6 @@ React utilities for simple state caching, types and testing.
     React-Hilfsfunktionen für einfaches State-Caching, Typen und Tests.
 -->
 
-<!--|deDE:Installation-->
 Installation
 ------------
 
@@ -54,9 +55,9 @@ import {useMemorizedValue, useReferenceState} from 'react-generic-tools'
 // ...
 ```
 
-<!--|deDE:Testbeispiel-->
-Testing example
----------------
+<!--|deDE:Beispiel-->
+Example
+-------
 
 ```TypeScript
 import {formatEndUserTime} from 'react-generic-tools/endToEndTestHelper'
