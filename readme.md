@@ -1,7 +1,7 @@
 <!-- !/usr/bin/env markdown
 -*- coding: utf-8 -*-
 region header
-Copyright Torben Sickert (info["~at~"]torben.website) 16.12.2012
+Copyright Torben Sickert (info["~at~"]tsickert.com) 16.12.2012
 
 License
 -------
@@ -24,7 +24,7 @@ Project status
 [![lint](https://img.shields.io/github/actions/workflow/status/thaibault/react-generic-tools/lint.yaml?label=lint&style=for-the-badge)](https://github.com/thaibault/react-generic-tools/actions/workflows/lint.yaml)
 
 [![deploy web documentation](https://img.shields.io/github/actions/workflow/status/thaibault/react-generic-tools/deploy-web-documentation.yaml?label=deploy%20web%20documentation&style=for-the-badge)](https://github.com/thaibault/react-generic-tools/actions/workflows/deploy-web-documentation.yaml)
-[![web documentation](https://img.shields.io/website-up-down-green-red/https/torben.website/react-generic-tools.svg?label=web-documentation&style=for-the-badge)](https://torben.website/react-generic-tools)
+[![web documentation](https://img.shields.io/website-up-down-green-red/https/tsickert.com/react-generic-tools.svg?label=web-documentation&style=for-the-badge)](https://tsickert.com/react-generic-tools)
 
 <!--|deDE:Verwendung-->
 Use case
