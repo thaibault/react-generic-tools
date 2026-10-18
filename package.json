@@ -31,7 +31,7 @@
     "./endToEndTestHelper.js": "./endToEndTestHelper.js",
     "./testHelper": "./testHelper.js",
     "./testHelper.js": "./testHelper.js",
-    "./type": "./testHelper.d.ts"
+    "./type": "./type.d.ts"
   },
   "main": "index.js",
   "files": [
