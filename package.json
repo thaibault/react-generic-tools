@@ -26,8 +26,11 @@
   "exports": {
     ".": "./index.js",
     "./debugHelper": "./debugHelper.js",
+    "./debugHelper.js": "./debugHelper.js",
     "./endToEndTestHelper": "./endToEndTestHelper.js",
-    "./testHelper": "./testHelper.js"
+    "./endToEndTestHelper.js": "./endToEndTestHelper.js",
+    "./testHelper": "./testHelper.js",
+    "./testHelper.js": "./testHelper.js"
   },
   "main": "index.js",
   "files": [
