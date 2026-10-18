@@ -25,9 +25,9 @@
   "type": "module",
   "exports": {
     ".": "./index.js",
-    "./debugHelper": "./dist/debugHelper.js",
-    "./endToEndTestHelper": "./dist/endToEndTestHelper.js",
-    "./testHelper": "./dist/testHelper.js"
+    "./debugHelper": "./debugHelper.js",
+    "./endToEndTestHelper": "./endToEndTestHelper.js",
+    "./testHelper": "./testHelper.js"
   },
   "main": "index.js",
   "files": [
