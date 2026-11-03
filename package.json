@@ -24,25 +24,25 @@
   },
   "type": "module",
   "exports": {
-    ".": "./index.js",
-    "./debugHelper": "./debugHelper.js",
-    "./debugHelper.js": "./debugHelper.js",
-    "./endToEndTestHelper": "./endToEndTestHelper.js",
-    "./endToEndTestHelper.js": "./endToEndTestHelper.js",
-    "./testHelper": "./testHelper.js",
-    "./testHelper.js": "./testHelper.js",
-    "./type": "./type.d.ts"
+    ".": "./dist/index.js",
+    "./debugHelper": "./dist/debugHelper.js",
+    "./debugHelper.js": "./dist/debugHelper.js",
+    "./endToEndTestHelper": "./dist/endToEndTestHelper.js",
+    "./endToEndTestHelper.js": "./dist/endToEndTestHelper.js",
+    "./testHelper": "./dist/testHelper.js",
+    "./testHelper.js": "./dist/testHelper.js",
+    "./type": "./dist/type.d.ts"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "files": [
-    "debugHelper.d.ts",
-    "debugHelper.js",
-    "endToEndTestHelper.d.ts",
-    "endToEndTestHelper.js",
-    "index.d.ts",
-    "testHelper.d.ts",
-    "testHelper.js",
-    "type.d.ts"
+    "dist"
   ],
   "sideEffects": false,
   "scripts": {
@@ -78,7 +78,7 @@
     "@types/webpack-env": "^1.18.8",
     "@typescript-eslint/eslint-plugin": "^8.72.1",
     "@typescript-eslint/parser": "^8.72.1",
-    "clientnode": "^4.0.1529",
+    "clientnode": "^4.0.1530",
     "eslint": "^10.14.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-jsdoc": "^65.4.2",
@@ -88,8 +88,8 @@
     "react-dom": "^19.3.1",
     "tslib": "^2.9.1",
     "typescript-eslint": "^8.72.1",
-    "web-documentation": "^1.0.68",
-    "weboptimizer": "^4.0.99",
+    "web-documentation": "^1.0.71",
+    "weboptimizer": "^4.0.102",
     "webpack-dev-server": "^6.1.0"
   },
   "peerDependencies": {
@@ -190,6 +190,14 @@
             }
           }
         }
+      }
+    },
+    "path": {
+      "source": {
+        "base": "src/"
+      },
+      "target": {
+        "base": "dist/"
       }
     }
   },
