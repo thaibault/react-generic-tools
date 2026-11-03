@@ -53,14 +53,14 @@
     "check:types": "weboptimizer check:types",
     "clear": "weboptimizer clear",
     "document": "weboptimizer document",
-    "lint": "yarn clear && weboptimizer lint",
+    "lint": "weboptimizer lint",
     "prepare": "yarn build",
     "serve": "weboptimizer serve",
     "start": "yarn serve",
     "test": "echo No tests available.",
-    "test:browser": "yarn clear && weboptimizer test:browser",
-    "test:coverage": "yarn clear && weboptimizer test:coverage",
-    "test:coverage:report": "yarn clear && weboptimizer test:coverage:report",
+    "test:browser": "weboptimizer test:browser",
+    "test:coverage": "weboptimizer test:coverage",
+    "test:coverage:report": "weboptimizer test:coverage:report",
     "update:documentation": "web-documentation",
     "watch": "weboptimizer build --watch"
   },
@@ -89,7 +89,7 @@
     "tslib": "^2.9.1",
     "typescript-eslint": "^8.72.1",
     "web-documentation": "^1.0.71",
-    "weboptimizer": "^4.0.102",
+    "weboptimizer": "^4.0.103",
     "webpack-dev-server": "^6.1.0"
   },
   "peerDependencies": {
