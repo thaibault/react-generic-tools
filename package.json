@@ -137,8 +137,7 @@
       "deDE",
       "enUS"
     ],
-    "tagline": "Generic react utilities.",
-    "trackingCode": "TODO"
+    "tagline": "Generic react utilities."
   },
   "webOptimizer": {
     "commandLine": {
