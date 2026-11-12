@@ -54,18 +54,18 @@ export const getChanges = <Type, SubValue>(
             }]
 
         let changes: Array<ChangedValue<SubValue>> = []
-        for (const [name, subNewValue] of Object.entries(newValue)) {
-            const subOldValue = oldValue[name as keyof Type]
-
+        // NOTE: Respect removed keys as well.
+        for (const name of new Set(
+            Object.keys(oldValue).concat(Object.keys(newValue))
+        ))
             changes = changes.concat(
                 getChanges(
-                    subOldValue,
-                    subNewValue,
+                    oldValue[name as keyof Type] as SubValue,
+                    newValue[name as keyof Type] as SubValue,
                     path.concat(name),
                     recursiveLimit - 1
                 )
             )
-        }
 
         return changes
     }
