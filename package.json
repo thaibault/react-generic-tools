@@ -95,7 +95,6 @@
   },
   "peerDependencies": {
     "@babel/preset-react": "*",
-    "@types/prop-types": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
     "clientnode": "*",
