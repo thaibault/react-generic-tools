@@ -10443,6 +10443,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-generic-tools@workspace:."
   dependencies:
+    "@babel/core": "npm:^8.1.0"
     "@babel/eslint-parser": "npm:^8.1.2"
     "@babel/preset-react": "npm:^8.0.1"
     "@eslint/js": "npm:^10.0.1"
