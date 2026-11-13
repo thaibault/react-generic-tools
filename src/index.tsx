@@ -65,7 +65,8 @@ export const Pagination: FunctionComponent<Partial<PaginationProperties>> = ({
     hidePrevButton = false,
     page = 1,
     pageSize = 5,
-    render = ({page, type}): string => String(page) || type,
+    render = ({page, type}): string =>
+        type === 'page' ? String(page) : type,
     showFirstButton = false,
     showLastButton = false,
     siblingCount = 1,
